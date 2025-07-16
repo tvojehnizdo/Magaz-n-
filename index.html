@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Magazín Tvoje Hnízdo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="banner">
+    <img src="assets/banner.jpg" alt="Magazín Tvoje Hnízdo" />
+  </div>
+
+  <header>
+    <h1>Magazín Tvoje Hnízdo</h1>
+    <p>Inspirace, rady a novinky ze světa dřevostaveb</p>
+  </header>
+  <main>
+    <section id="articles">
+      <!-- Výpis článků -->
+      <script>
+        fetch('articles.json')
+          .then(response => response.json())
+          .then(data => {
+            const container = document.getElementById('articles');
+            data.forEach(article => {
+              const articleBlock = document.createElement('div');
+              articleBlock.className = 'article';
+              articleBlock.innerHTML = `<h2><a href="articles/${article.filename}">${article.title}</a></h2><p>${article.summary}</p>`;
+              container.appendChild(articleBlock);
+            });
+          });
+      </script>
+    </section>
+    <script>
+      // Přidat tlačítko sdílení ke každému článku
+      setTimeout(() => {
+        document.querySelectorAll('.article').forEach(article => {
+          
+const url = window.location.origin + '/' + article.querySelector('a').getAttribute('href');
+const buttonsDiv = document.createElement('div');
+buttonsDiv.className = 'share-buttons';
+
+const copyBtn = document.createElement('button');
+copyBtn.textContent = '📋 Zkopírovat odkaz';
+copyBtn.className = 'share-button';
+copyBtn.onclick = () => {
+  navigator.clipboard.writeText(url);
+  alert('Odkaz zkopírován: ' + url);
+};
+buttonsDiv.appendChild(copyBtn);
+
+const fbBtn = document.createElement('a');
+fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+fbBtn.target = '_blank';
+fbBtn.className = 'share-link';
+fbBtn.textContent = '🔗 Sdílet na Facebooku';
+buttonsDiv.appendChild(fbBtn);
+
+const lnBtn = document.createElement('a');
+lnBtn.href = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`;
+lnBtn.target = '_blank';
+lnBtn.className = 'share-link';
+lnBtn.textContent = '🔗 Sdílet na LinkedIn';
+buttonsDiv.appendChild(lnBtn);
+
+article.appendChild(buttonsDiv);
+
+          shareBtn.textContent = 'Sdílet';
+          shareBtn.className = 'share-button';
+          shareBtn.onclick = () => {
+            const url = window.location.origin + '/' + article.querySelector('a').getAttribute('href');
+            navigator.clipboard.writeText(url);
+            alert('Odkaz zkopírován: ' + url);
+          };
+          article.appendChild(shareBtn);
+        });
+      }, 500);
+    </script>
+  </main>
+  <footer>
+    <p>&copy; 2025 Tvoje Hnízdo</p>
+  </footer>
+</body>
+</html>
