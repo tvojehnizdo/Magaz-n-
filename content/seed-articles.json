@@ -1,0 +1,16 @@
+{
+  "articles": [
+    {"title":"Jak postavit dům svépomocí: první kroky","excerpt":"Od nápadu k realitě: rozpočet, povolení, harmonogram.","tags":["svépomoc","rozpočet"],"category":"postupy"},
+    {"title":"Rozpočet dřevostavby: co kolik stojí v roce 2025","excerpt":"Přehled všech položek od základů po interiér.","tags":["rozpočet"],"category":"finance"},
+    {"title":"Dotace a legislativa: rychlý přehled","excerpt":"NZÚ, kolaudace, ohlášení, stavební deník – co a kdy řešit.","tags":["legislativa","dotace"],"category":"legislativa"},
+    {"title":"Základy na svahu: jak zvolit správné řešení","excerpt":"Piloty, pasy, deska: srovnání výhod a nevýhod.","tags":["základy"],"category":"technologie"},
+    {"title":"Osazení oken a dveří v dřevostavbě","excerpt":"Detailní postup, chyby a jejich prevence.","tags":["okna","detaily"],"category":"postupy"},
+    {"title":"Tepelné mosty: 7 kritických míst dřevostavby","excerpt":"Jak je najít a jak jim předejít.","tags":["energetika"],"category":"technologie"},
+    {"title":"Jak vybrat dodavatele: checklist a smlouva","excerpt":"Konkurz, reference, sankce, milníky, převzetí.","tags":["dodavatelé"],"category":"organizace"},
+    {"title":"Realizace elektro v dřevostavbě","excerpt":"Příprava tras, prostupy, protipožár.","tags":["elektro"],"category":"postupy"},
+    {"title":"Větrání a rekuperace: ano/ne?","excerpt":"Kdy dává smysl a jak spočítat výkon.","tags":["vzduchotechnika"],"category":"technologie"},
+    {"title":"Střecha: plech vs. tašky vs. PVC","excerpt":"Cena, hmotnost, životnost, údržba.","tags":["střecha"],"category":"materiály"},
+    {"title":"Omítky a finální povrchy pro CLT a rámové systémy","excerpt":"Co funguje a co praská.","tags":["povrchy"],"category":"materiály"},
+    {"title":"Jak připravit pozemek před stavbou","excerpt":"Sítě, přístup, skrývka, geologie.","tags":["pozemek"],"category":"příprava"}
+  ]
+}
