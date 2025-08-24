@@ -1,86 +1,45 @@
-<!DOCTYPE html>
-<html lang="cs">
-<head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Magazín Tvoje Hnízdo</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
-  <div class="banner">
-    <img src="assets/banner.jpg" alt="Magazín Tvoje Hnízdo" />
-  </div>
-
-  <header>
-    <h1>Magazín Tvoje Hnízdo</h1>
-    <p>Inspirace, rady a novinky ze světa dřevostaveb</p>
-  </header>
-  <main>
-    <section id="articles">
-      <!-- Výpis článků -->
-      <script>
-        fetch('articles.json')
-          .then(response => response.json())
-          .then(data => {
-            const container = document.getElementById('articles');
-            data.forEach(article => {
-              const articleBlock = document.createElement('div');
-              articleBlock.className = 'article';
-              articleBlock.innerHTML = `<h2><a href="articles/${article.filename}">${article.title}</a></h2><p>${article.summary}</p>`;
-              container.appendChild(articleBlock);
-            });
-          });
-      </script>
-    </section>
-    <script>
-      // Přidat tlačítko sdílení ke každému článku
-      setTimeout(() => {
-        document.querySelectorAll('.article').forEach(article => {
-          
-const url = window.location.origin + '/' + article.querySelector('a').getAttribute('href');
-const buttonsDiv = document.createElement('div');
-buttonsDiv.className = 'share-buttons';
-
-const copyBtn = document.createElement('button');
-copyBtn.textContent = '📋 Zkopírovat odkaz';
-copyBtn.className = 'share-button';
-copyBtn.onclick = () => {
-  navigator.clipboard.writeText(url);
-  alert('Odkaz zkopírován: ' + url);
-};
-buttonsDiv.appendChild(copyBtn);
-
-const fbBtn = document.createElement('a');
-fbBtn.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-fbBtn.target = '_blank';
-fbBtn.className = 'share-link';
-fbBtn.textContent = '🔗 Sdílet na Facebooku';
-buttonsDiv.appendChild(fbBtn);
-
-const lnBtn = document.createElement('a');
-lnBtn.href = `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(url)}`;
-lnBtn.target = '_blank';
-lnBtn.className = 'share-link';
-lnBtn.textContent = '🔗 Sdílet na LinkedIn';
-buttonsDiv.appendChild(lnBtn);
-
-article.appendChild(buttonsDiv);
-
-          shareBtn.textContent = 'Sdílet';
-          shareBtn.className = 'share-button';
-          shareBtn.onclick = () => {
-            const url = window.location.origin + '/' + article.querySelector('a').getAttribute('href');
-            navigator.clipboard.writeText(url);
-            alert('Odkaz zkopírován: ' + url);
-          };
-          article.appendChild(shareBtn);
-        });
-      }, 500);
-    </script>
-  </main>
-  <footer>
-    <p>&copy; 2025 Tvoje Hnízdo</p>
-  </footer>
-</body>
-</html>
+<!doctype html><html lang="cs"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Magazín Tvoje Hnízdo – dřevostavby, inspirace, postupy</title>
+<meta name="description" content="Magazín o dřevostavbách: návody, rozpočty, legislativa, inspirace a reálné zkušenosti.">
+<link rel="canonical" href="https://magazin.tvojehnizdo.com/"/>
+<link rel="stylesheet" href="/style.css"/><script src="/script.js" defer></script>
+<link rel="alternate" type="application/rss+xml" title="RSS" href="/rss.xml"/>
+</head><body>
+<header class="site"><div class="container nav">
+  <div class="logo"><div class="logo-dot"></div><a href="/">Magazín Tvoje Hnízdo</a></div>
+  <nav><a href="/rss.xml" rel="alternate">RSS</a> <a class="nav-cta" href="https://tvojehnizdo.com/kontakt">Nezávazná konzultace</a></nav>
+</div></header>
+<section class="container hero">
+  <h1>Dřevostavby bez stresu</h1>
+  <p>Praktické návody, rozpočty, legislativa, inspirace a reálné zkušenosti.</p>
+  <div class="controls"><input id="q" type="search" placeholder="Hledat články… (rozpočet, dotace, svépomoc)"/></div>
+</section>
+<main class="container">
+  <section class="grid" id="list"><!-- doplní níže JS z articles.json --></section>
+</main>
+<footer class="site"><div class="container">© 2025 Tvoje Hnízdo • <a href="/sitemap.xml">sitemap</a> • <a href="/rss.xml">rss</a></div></footer>
+<script>
+(async () => {
+  const qs = new URLSearchParams(location.search).get('q')||'';
+  const res = await fetch('/articles.json',{cache:'no-store'}); const data = await res.json();
+  const arts = Array.isArray(data)?data:(data.articles||[]);
+  const toSlug = s => (s||'').toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9\-]/g,'');
+  const list = document.getElementById('list');
+  const render = (f='') => {
+    const rows = arts.filter(a=>!f || (a.title||'').toLowerCase().includes(f) || (a.tags||[]).join(' ').toLowerCase().includes(f));
+    list.innerHTML = rows.map(a=>`<article class="card">
+      <a href="/articles/${a.slug||toSlug(a.title)}.html">
+        <img class="cover" src="${a.hero_image||'/banner.jpg'}" alt="${a.title||''}">
+        <div class="card-body">
+          <div class="card-meta">${(a.date||'').split('T')[0]} • ${(a.tags||[]).slice(0,3).join(' • ')}</div>
+          <h2 class="card-title">${a.title||''}</h2>
+          <p class="card-excerpt">${a.excerpt||''}</p>
+        </div>
+      </a>
+    </article>`).join('');
+  };
+  render(qs); const q=document.getElementById('q'); if(q){ q.value=qs; q.addEventListener('input',e=>{render(e.target.value);});}
+})();
+</script>
+</body></html>
