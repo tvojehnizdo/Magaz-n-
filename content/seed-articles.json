@@ -1,6 +1,6 @@
 {
   "articles": [
-    {"title":"Jak postavit dům svépomocí: první kroky","excerpt":"Od nápadu k realitě: rozpočet, povolení, harmonogram.","tags":["svépomoc","rozpočet"],"category":"postupy"},
-    {"title":"Rozpočet dřevostavby v roce 2025","excerpt":"Položky od základů po interiér s real cenami.","tags":["rozpočet"],"category":"finance"}
+    {"title":"Jak postavit dům svépomocí: první kroky","excerpt":"Od nápadu k realitě: rozpočet, povolení, harmonogram.","tags":["svépomoc","rozpočet"],"category":"postupy","hero_image":"/banner.jpg"},
+    {"title":"Rozpočet dřevostavby v roce 2025","excerpt":"Položky od základů po interiér s real cenami.","tags":["rozpočet"],"category":"finance","hero_image":"/banner.jpg"}
   ]
 }

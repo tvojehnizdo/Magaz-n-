@@ -15,9 +15,7 @@
   <p>Praktické návody, rozpočty, legislativa, inspirace a reálné zkušenosti.</p>
   <div class="controls"><input id="q" type="search" placeholder="Hledat články… (rozpočet, dotace, svépomoc)"/></div>
 </section>
-<main class="container">
-  <section class="grid" id="list"><!-- doplní níže JS z articles.json --></section>
-</main>
+<main class="container"><section class="grid" id="list"></section></main>
 <footer class="site"><div class="container">© 2025 Tvoje Hnízdo • <a href="/sitemap.xml">sitemap</a> • <a href="/rss.xml">rss</a></div></footer>
 <script>
 (async () => {
@@ -39,7 +37,7 @@
       </a>
     </article>`).join('');
   };
-  render(qs); const q=document.getElementById('q'); if(q){ q.value=qs; q.addEventListener('input',e=>{render(e.target.value);});}
+  render(qs); const q=document.getElementById('q'); if(q){ q.value=qs; q.addEventListener('input',e=>render(e.target.value)); }
 })();
 </script>
 </body></html>
