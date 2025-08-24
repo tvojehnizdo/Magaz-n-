@@ -1,0 +1,5 @@
+/* TEAM */
+Site: Tvoje Hnízdo – magazín
+Author: tým Tvoje Hnízdo
+/* TECHNOLOGY */
+Stack: Static HTML, Python build, Vercel
