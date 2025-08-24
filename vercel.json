@@ -1,0 +1,18 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    { "source": "/(.*)", "headers": [
+      { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+      { "key": "X-Content-Type-Options", "value": "nosniff" },
+      { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+      { "key": "Permissions-Policy", "value": "geolocation=(), microphone=(), camera=()" },
+      { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains; preload" },
+      { "key": "Report-To", "value": "{\"group\":\"default\",\"max_age\":31536000,\"endpoints\":[{\"url\":\"https://reporting.thnzd.dev/api/report\"}]}" },
+      { "key": "NEL", "value": "{\"report_to\":\"default\",\"max_age\":31536000,\"include_subdomains\":true}" }
+    ]},
+    { "source": "/(.*)\\.(jpg|jpeg|png|gif|webp|svg)$", "headers": [
+      { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+    ]}
+  ]
+}
