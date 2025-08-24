@@ -1,0 +1,9 @@
+{
+  "name":"Tvoje Hnízdo – Magazín",
+  "short_name":"TH Magazín",
+  "start_url":"/",
+  "display":"standalone",
+  "background_color":"#ffffff",
+  "theme_color":"#0b1526",
+  "icons":[]
+}
